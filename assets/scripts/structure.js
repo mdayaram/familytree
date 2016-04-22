@@ -1567,3 +1567,4 @@ var structure = [
     "m": 153
   }
 ]
+var focus_person = 2

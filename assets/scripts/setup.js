@@ -166,8 +166,7 @@ function init() {
 
 
       // n: name, s: sex, m: mother, f: father, ux: wife, vir: husband, a: attributes/markers
-      setupDiagram(myDiagram, structure,
-        4 /* focus on this person */);
+      setupDiagram(myDiagram, structure, focus_person);
     }
 
 

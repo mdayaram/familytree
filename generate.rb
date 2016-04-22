@@ -45,6 +45,7 @@ people_by_name.keys.each do |name|
   people << final_person
 end
 
-structure = "var structure = #{JSON.pretty_generate people}"
+structure = "var structure = #{JSON.pretty_generate people}\n"
+structure += "var focus_person = #{people_by_name["Manoj Dayaram"][:key]}"
 File.open("assets/scripts/structure.js", "w") { |f| f.write(structure) }
 puts "success"
