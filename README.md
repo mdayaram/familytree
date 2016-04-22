@@ -8,7 +8,7 @@ Pretty much just copied/pasted what's here:
 http://gojs.net/latest/samples/genogram.html
 
 I didn't want to write JSON to update the tree, so I made a ruby script to
-parse a CSV style file, `people.dat` and generate the JSON for me.  Simply run
+parse a CSV file, `people.csv` and generate the JSON for me.  Simply run
 
 ```bash
 $> ./generate.rb

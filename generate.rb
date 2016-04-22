@@ -2,8 +2,13 @@
 
 require 'json'
 
-people_arr = File.read("people.dat").split("\n")
+people_arr = File.read("people.csv").gsub("\"", "").split("\n")
 people_arr.shift # forget the first line, labels
+
+# remove/ignore empty lines and comment lines
+people_arr = people_arr.reject { |line| line.strip.empty? }
+people_arr = people_arr.reject { |line| line.strip.start_with?(",") }
+people_arr = people_arr.reject { |line| line.strip.start_with?("#") }
 
 people_by_name = {}
 people_arr.each_with_index do |person_data, index|
@@ -12,8 +17,8 @@ people_arr.each_with_index do |person_data, index|
   people_by_name[name] = {}
   people_by_name[name][:key] = index
   people_by_name[name][:s] = attributes.shift.strip.upcase # gender
-  people_by_name[name][:f] = attributes.shift.strip # father
-  people_by_name[name][:m] = attributes.shift.strip # mother
+  people_by_name[name][:f] = attributes.shift.strip if attributes.size > 0 # father
+  people_by_name[name][:m] = attributes.shift.strip if attributes.size > 0 # mother
   if people_by_name[name][:s] == 'M' && attributes.size > 0
     people_by_name[name][:ux] = attributes.shift.strip # wife
   elsif people_by_name[name][:s] == 'F' && attributes.size > 0
