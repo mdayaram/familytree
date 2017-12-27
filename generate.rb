@@ -27,6 +27,11 @@ people_arr.each_with_index do |person_data, index|
   people_by_name[name][:a] = attributes.map(&:upcase).map(&:strip) # remaining attributes
 end
 
+def raise_if_noexist(person, hash)
+  return if person.nil? || person.empty?
+  raise "ERROR: Inconsistency with #{person}" if hash[person].nil?
+end
+
 # Now replace name occurences with key ids
 people = []
 people_by_name.keys.each do |name|
@@ -37,6 +42,11 @@ people_by_name.keys.each do |name|
   final_person[:key] = person[:key]
   final_person[:s] = person[:s]
   final_person[:a] = person[:a]
+
+  raise_if_noexist(person[:f], people_by_name)
+  raise_if_noexist(person[:m], people_by_name)
+  raise_if_noexist(person[:ux], people_by_name)
+  raise_if_noexist(person[:vir], people_by_name)
 
   final_person[:f] = people_by_name[person[:f]][:key] if person[:f] && person[:f].size > 0
   final_person[:m] = people_by_name[person[:m]][:key] if person[:m] && person[:m].size > 0
