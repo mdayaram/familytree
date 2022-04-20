@@ -1,8 +1,13 @@
 Name,Sex,Father,Mother,Spouse,Attributes
 ,,,,,
-Aarty Dayaram,f,Gul Dayaram,Veena Dayaram,,
+Aarty Dayaram,f,Gul Dayaram,Veena Dayaram,Manesh N.,
 Pradeep Dayaram,m,Gul Dayaram,Veena Dayaram,,
 Manoj Dayaram,m,Gul Dayaram,Veena Dayaram,,
+,,,,,
+# Aarty's Side,,,,,
+Manesh N.,m,,,Aarty Dayaram,
+Surya Nalwari,f,Manesh N.,Aarty Dayaram,,
+Maya Nalwari,f,Manesh N.,Aarty Dayaram,,
 ,,,,,
 # Papa's Side,,,,,
 Bachumal's Wife,f,,,Bachumal Mirchandani,D
