@@ -66,8 +66,10 @@ Aryan Jadhwani,m,Preeti Jadhwani,Nilesh Jadhwani,,
 Princess Mohinani,f,Rajesh Mohinani,Rina Mohinani,,
 ,,,,,
 # Nani's Family,,,,,
+Muli Mama,f,,,Muli Papa,D
+Muli Papa,m,,,Muli Mama,D
 Boolchand Mohinani,m,,,Muli Mohinani,D
-Muli Mohinani,f,,,Boolchand Mohinani,D
+Muli Mohinani,f,Muli Mama,Muli Papa,Boolchand Mohinani,D
 Ramesh Mohinani,m,Boolchand Mohinani,Muli Mohinani,Deepa Mohinani,
 Haresh Mohinani,m,Boolchand Mohinani,Muli Mohinani,Reinu Mohinani,
 Tulsi Mohinani,m,Boolchand Mohinani,Muli Mohinani,Sapna Mohinani,
@@ -78,6 +80,13 @@ Babe,f,Boolchand Mohinani,Muli Mohinani,Raju,
 Sheila Naraindas,f,Boolchand Mohinani,Muli Mohinani,Nari Naraindas,
 Ishu Mirpuri,f,Boolchand Mohinani,Muli Mohinani,Mohan Mirpuri,
 Chandra,f,Boolchand Mohinani,Muli Mohinani,,D
+Masi,f,Muli Papa,Muli Mama,Masi Husband,D
+Masi Husband,m,,,Masi,D
+Vandu Mama,f,Masi Husband,Masi,Vandu Papa,D
+Vandu Papa,m,,,Vandu Mama,D
+Vandu,f,Vandu Mama,Vandu Papa,Vandu exHusband,
+Vandu exHusband,m,,,Vandu,
+Shayna,f,Vandu,Vandu exHusband,,
 ,,,,,
 # Aunty Deepa's Side,,,,,
 Ishuri Daswani,f,,,Aunty Deepa's Dad,
