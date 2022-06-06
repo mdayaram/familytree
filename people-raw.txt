@@ -1,0 +1,290 @@
+X (id=muli_pa, M, deathday=x)
+X (id=muli_ma, F, deathday=x)
+	Muli Mohinani (F, deathday=x)
+	Masi (F, deathday=x)
+
+Masi
+X (id=masi_husband, M, deathday=x)
+	X (id=vandu_ma, F, deathday=x)
+
+X (id=vandu_ma, F)
+X (id=vandu_pa, M, deathday=x)
+	Vandu (F)
+
+Vandu
+X (id=vandu_husband, M)
+	Shayna (F)
+
+Muli Mohinani
+Boolchand Mohinani (M, deathday=x)
+	Ramesh Mohinani (M)
+	Haresh Mohinani (M)
+	Tulsi Mohinani (M)
+	Jiwat Mohinani (M, deathday=x)
+	Lacha (F)
+	Pushpa (F)
+	Babe (F)
+	Sheila Naraindas (F)
+	Ishu Mirpuri (F)
+	Chandra (F, deathday=x)
+	Nani (F, deathday=x)
+
+X (id=deepas_pa, M, deathday=x)
+Ishuri Daswani (F)
+	Deepa Mohinani (F)
+	Mahesh Daswani (M)
+
+Mahesh Daswani
+Rekha Daswani (F)
+	X (id=ishuri_grandson, M)
+
+Ramesh Mohinani
+Deepa Mohinani
+	Kiran Daryanani (F)
+	Prakash Mohinani (M)
+	Krishna Mohinani (M)
+
+Kiran Daryanani
+Suraj Daryanani (M)
+
+Prakash Mohinani
+Nimisha Mohinani (F)
+	Aisha Mohinani (F)
+	Shivan Mohinani (F)
+
+Haresh Mohinani
+Reinu Mohinani (F)
+	Vijay Mohinani (M)
+	Harry Mohinani (M)
+
+Vijay Mohinani
+Priya Mohinani (F)
+	Manika Mohinani (F)
+	Mohit Mohinani (M)
+	Nikhil Mohinani (M)
+
+Harry Mohinani
+Roshni Mohinani (F)
+	Sasha Mohinani (F)
+	Simrin Mohinani (F)
+	Shiv Mohinani (M)
+
+Tulsi Mohinani
+Sapna Mohinani (F)
+	Sanju Mohinani (M)
+	Priya Nalwalrai (F, deathday=x)
+
+Sanju Mohinani
+Barbara Mohinani (F)
+	Nihal Mohinani (M)
+
+Priya Nalwalrai
+Manesh Nalwalrai (M)
+	Anika Nalwalrai (F)
+	Sameer Nalwalrai (M)
+
+Jiwat Mohinani
+Padu Mohinani (F)
+	Rajesh Mohinani (M)
+	Mayu Mirani (F)
+	Neenu (F)
+	Kavita Dinani (F)
+
+Rajesh Mohinani
+Rina Mohinani (F)
+S
+	Princess Mohinani (F)
+
+Mayu Mirani
+Suresh Mirani (M)
+	Chirag Mirani (M)
+	Lavesh Mirani (M)
+	Salesh Mirani (M)
+
+Neenu
+Naresh (M)
+	Sanam (F)
+	Roshni Mayani (F)
+	Kashmira Mayani (F)
+	Ashek (M)
+
+Sanam
+Mahesh (M)
+
+Roshni Mayani
+Nitesh Mayani (M)
+
+Kashmira Mayani
+Benny Mayani (M)
+
+Kavita Dinani
+Bob Dinani (M)
+	Sonam Dinani (F)
+	Pashmina Dinani (F)
+
+Lacha
+Mohan (M)
+	Meenu Mukhi (F)
+	Vinod (M)
+
+Meenu Mukhi
+Raj Mukhi (M)
+	Angelie Mukhi (F)
+	Arun Mukhi (M)
+
+Vinod
+Prerna (F)
+	Rohan (M)
+	Anisha (F)
+
+Pushpa
+Prem (M)
+	Rani Manghnani (F)
+	Rekha Mahtani (F)
+
+Rani Manghnani
+Laveen Manghnani (M)
+	Kiara Manghnani (F)
+	Vinisha Manghnani (F)
+	Dhiren Manghnani (M)
+
+Rekha Mahtani
+Ravi Mahtani (M)
+	Sanchit Mahtani (M)
+	Sanchita Daswani (F)
+
+Sanchita Daswani
+Gautam Daswani (M)
+	X (id=sanchitas_daughter, F)
+
+Babe
+Raju (M)
+	Rina (F)
+	Jayu (F)
+
+Jayu
+Rajesh (id=jayus_husband, M)
+	X (id=jayus_daughter, F)
+	X (id=jayus_son, M)
+
+Sheila Naraindas
+Nari Naraindas (M)
+	Roma (F)
+	Sanju Naraindas (M)
+
+Roma
+Claudio (M)
+
+Sanju Naraindas
+Vanita Naraindas (F)
+S
+	Jenny Naraindas (F)
+	Natasha Naraindas (F)
+
+Ishu Mirpuri
+Mohan Mirpuri (M)
+	Divya Daswani (F)
+	Nithin Mirpuri (M)
+
+Divya Daswani
+Ravi Daswani (M)
+
+Nithin Mirpuri
+Deepti Mirpuri (F)
+	Aryan Mirpuri (M)
+
+Chandra
+Sham (M, deathday=x)
+	Kiran (F)
+
+Kiran
+X (id=kirans_husband, M)
+	Chandani (F)
+	Sonya (F)
+
+Chandani
+X (id=chandanis_husband, M)
+
+Nani
+Nano (id=nani_husband, M, deathday=x)
+	Veena Dayaram (F)
+	Maya (F, deathday=x)
+	Kantu Aswani (F)
+
+Kantu Aswani
+Laxman Aswani (M)
+	Rina Mohinani
+	Deepti Aswani (F)
+	Preeti Jadhwani (F)
+	Manish Aswani (M)
+
+Preeti Jadhwani
+Nilesh Jadhwani (M)
+	Aryan Jadhwani (M)
+
+Veena Dayaram
+Gul Dayaram (M)
+	Pooja Dayaram (F, deathday=x)
+	Aarty Dayaram (F)
+	Pradeep Dayaram (M)
+	Manoj Dayaram (M)
+
+Aarty Dayaram
+Manesh Nalwalrai
+	Surya Nalwalrai (F)
+	Maya Nalwalrai (F)
+
+Bachumal Mirchandani (M, deathday=x)
+X (id=bachumals_wife, F, deathday=x)
+	Dayaram Bachumal (M, deathday=x)
+
+Dayaram Bachumal
+Ishwari Dayaram (F)
+	Ratna Ednani (F)
+	Sita Chandiramani (F, deathday=x)
+	Mira Daryanani (F)
+	Gul Dayaram (M)
+	Murli Dayaram (M, deathday=x)
+	Sheila Chotrani (F, deathday=x)
+
+Ratna Ednani
+Lalchand Ednani (M, deathday=x)
+	Henny Ednani (M)
+	Asha Lalwani (F)
+	Sonu Ednani (F)
+
+Asha Lalwani
+Haresh Lalwani (M)
+	Puja Lalwani (F)
+
+Henny Ednani
+Natasha Ednani (F)
+	Jatin Ednani (M)
+	Gaurav Ednani (M)
+
+Sita Chandiramani
+Prem Chandiramani (M, deathday=x)
+	Mahesh Chandiramani (M)
+	Dinesh Chandiramani (M)
+
+Dinesh Chandiramani
+Sharon Chandiramani (F)
+S
+	Trinity Chandiramani (F)
+
+Mira Daryanani
+Satu Daryanani (M)
+	Kalpana Chandhok (F)
+	Shama (F)
+
+Kalpana Chandhok
+Puneet Chandhok (M)
+	Sameer Chandhok (M)
+	Saira Chandhok (F)
+
+Murli Dayaram
+Sima Dayaram (F)
+
+Sheila Chotrani
+Sunder Chotrani (M, deathday=x)
+	Aakanksha Chotrani (F, deathday=x)
