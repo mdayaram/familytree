@@ -1,8 +1,11 @@
 #!/usr/bin/env ruby
 
+require "json"
+
 class PersonNode
   attr_reader :name, :id, :gender, :is_dead
   attr_accessor :parents_union
+  attr_accessor :key
 
   def initialize(name, gender, id: nil, is_dead: false)
     @name = name
@@ -10,10 +13,11 @@ class PersonNode
     @gender = gender
     @is_dead = is_dead
     @parents_union = nil
+    @key = nil # only used for genogram output.
   end
 
   def to_s
-    "#{name} (#{gender}, id=#{id}, dead=#{is_dead})"
+    "#{name} (#{gender}, id=#{id}, key=#{key}, dead=#{is_dead})"
   end
 
   def inspect
@@ -148,6 +152,65 @@ class FileParser
   end
 end
 
+class GenogramOutput
+  attr_reader :people, :partner_map
+
+  def initialize(people, unions)
+    @people = people
+    @partner_map = {}
+    unions.each do |u|
+      partner_map[u.person_1] ||= []
+      partner_map[u.person_1] << u.person_2
+      partner_map[u.person_2] ||= []
+      partner_map[u.person_2] << u.person_1
+    end
+
+    @people.values.each_with_index do |p, i|
+      p.key = i
+    end
+  end
+
+  def focus_person
+    people["ManojDayaram"].key
+  end
+
+  def output!
+    structure = []
+    people.values.each do |p|
+      p_struct = { key: p.key, n: p.name, s: p.gender}
+      if p.parents_union&.person_1&.gender == "M"
+        p_struct.merge!({f: p.parents_union.person_1.key, m: p.parents_union.person_2.key})
+      elsif p.parents_union&.person_1&.gender == "F"
+        p_struct.merge!({f: p.parents_union.person_2.key, m: p.parents_union.person_1.key})
+      end
+
+      wives = []
+      husbands = []
+      partner_map[p]&.each do |partner|
+        if partner.gender == "M"
+          husbands << partner.key
+        else
+          wives << partner.key
+        end
+      end
+      p_struct.merge!({ux: wives, vir: husbands})
+      p_struct.merge!({a: ["D"]}) if p.is_dead
+
+      structure << p_struct
+    end
+
+    JSON.pretty_generate(structure)
+  end
+end
+
 f = FileParser.new
 f.parse!
 f.validate!
+
+geno = GenogramOutput.new(f.people, f.unions)
+structure = "var focus_person = #{geno.focus_person};\n"
+structure += "var structure = #{geno.output!};\n"
+File.open("assets/scripts/structure.js", "w") { |f| f.write(structure) }
+puts "success"
+
+
