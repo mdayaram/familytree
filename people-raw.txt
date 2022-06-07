@@ -9,9 +9,9 @@ X (id=masi_husband, M, deathday=x)
 
 X (id=vandu_ma, F)
 X (id=vandu_pa, M, deathday=x)
-	Vandu (F)
+	Venita Balani (F)
 
-Vandu
+Venita Balani
 X (id=vandu_husband, M)
 	Shayna (F)
 
@@ -72,16 +72,16 @@ Roshni Mohinani (F)
 Tulsi Mohinani
 Sapna Mohinani (F)
 	Sanju Mohinani (M)
-	Priya Nalwalrai (F, deathday=x)
+	Priya Nawalrai (F, deathday=x)
 
 Sanju Mohinani
 Barbara Mohinani (F)
 	Nihal Mohinani (M)
 
-Priya Nalwalrai
-Manesh Nalwalrai (M)
-	Anika Nalwalrai (F)
-	Sameer Nalwalrai (M)
+Priya Nawalrai
+Manesh Nawalrai (M)
+	Anika Nawalrai (F)
+	Sameer Nawalrai (M)
 
 Jiwat Mohinani
 Padu Mohinani (F)
@@ -230,9 +230,9 @@ Gul Dayaram (M)
 	Manoj Dayaram (M)
 
 Aarty Dayaram
-Manesh Nalwalrai
-	Surya Nalwalrai (F)
-	Maya Nalwalrai (F)
+Manesh Nawalrai
+	Surya Nawalrai (F)
+	Maya Nawalrai (F)
 
 Bachumal Mirchandani (M, deathday=x)
 X (id=bachumals_wife, F, deathday=x)

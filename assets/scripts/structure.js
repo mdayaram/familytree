@@ -106,7 +106,7 @@ var structure = [
   },
   {
     "key": 7,
-    "n": "Vandu",
+    "n": "Venita Balani",
     "s": "F",
     "f": 6,
     "m": 5,
@@ -632,7 +632,7 @@ var structure = [
   },
   {
     "key": 48,
-    "n": "Priya Nalwalrai",
+    "n": "Priya Nawalrai",
     "s": "F",
     "f": 13,
     "m": 46,
@@ -672,7 +672,7 @@ var structure = [
   },
   {
     "key": 51,
-    "n": "Manesh Nalwalrai",
+    "n": "Manesh Nawalrai",
     "s": "M",
     "ux": [
       48,
@@ -684,7 +684,7 @@ var structure = [
   },
   {
     "key": 52,
-    "n": "Anika Nalwalrai",
+    "n": "Anika Nawalrai",
     "s": "F",
     "f": 51,
     "m": 48,
@@ -697,7 +697,7 @@ var structure = [
   },
   {
     "key": 53,
-    "n": "Sameer Nalwalrai",
+    "n": "Sameer Nawalrai",
     "s": "M",
     "f": 51,
     "m": 48,
@@ -1745,7 +1745,7 @@ var structure = [
   },
   {
     "key": 137,
-    "n": "Surya Nalwalrai",
+    "n": "Surya Nawalrai",
     "s": "F",
     "f": 51,
     "m": 134,
@@ -1758,7 +1758,7 @@ var structure = [
   },
   {
     "key": 138,
-    "n": "Maya Nalwalrai",
+    "n": "Maya Nawalrai",
     "s": "F",
     "f": 51,
     "m": 134,
