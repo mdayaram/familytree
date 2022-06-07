@@ -58,7 +58,7 @@ class FileParser
   attr_reader :people, :unions
   attr_reader :filehandle
 
-  def initialize(file="people-raw.txt")
+  def initialize(file)
     @people = {}
     @unions = []
     @line_num = 0
@@ -203,7 +203,7 @@ class GenogramOutput
   end
 end
 
-f = FileParser.new
+f = FileParser.new("families.txt")
 f.parse!
 f.validate!
 
