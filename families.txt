@@ -21,7 +21,7 @@ Boolchand Mohinani (M, deathday=x)
 	Haresh Mohinani (M)
 	Tulsi Mohinani (M)
 	Jiwat Mohinani (M, deathday=x)
-	Lacha (F)
+	Lacha Nawalrai (F)
 	Pushpa (F)
 	Babe (F)
 	Sheila Naraindas (F)
@@ -122,20 +122,20 @@ Bob Dinani (M)
 	Sonam Dinani (F)
 	Pashmina Dinani (F)
 
-Lacha
-Mohan (M)
+Lacha Nawalrai
+Mohan Nawalrai (M)
 	Meenu Mukhi (F)
-	Vinod (M)
+	Vinod Nawalrai (M)
 
 Meenu Mukhi
 Raj Mukhi (M)
 	Angelie Mukhi (F)
 	Arun Mukhi (M)
 
-Vinod
-Prerna (F)
-	Rohan (M)
-	Anisha (F)
+Vinod Nawalrai
+Prerna Nawalrai (F)
+	Rohan Nawalrai (M)
+	Anisha Nawalrai (F)
 
 Pushpa
 Prem (M)
@@ -288,3 +288,120 @@ Sima Dayaram (F)
 Sheila Chotrani
 Sunder Chotrani (M, deathday=x)
 	Aakanksha Chotrani (F, deathday=x)
+
+X (M, id=mohan_dad, deathday=x)
+X (F, id=mohan_mom, deathday=x)
+  Mohan Nawalrai
+  X (M, id=manesh_grandpa, deathday=x)
+
+X (id=manesh_grandpa)
+X (F, id=manesh_grandma)
+  Rajan Nawalrai (M)
+  Ramesh Nawalrai (M)
+  Murli Nawalrai (M)
+
+Rajan Nawalrai
+Monica Nawalrai (F)
+  Amitu Nawalrai (M)
+  Malini Malu (F)
+  Manesh Nawalrai
+
+Amitu Nawalrai
+Chandini Nawalrai (F)
+  Gautum Nawalrai (M)
+  Reyan Nawalrai (M)
+
+Malini Malu
+Nick (M)
+  Shiv (M)
+  Dev (M)
+  Dev Twin (M)
+
+Ramesh Nawalrai
+Sheila Nawalrai (F)
+  Ravin Nawalrai (M)
+  Sabrina (F)
+
+Ravin Nawalrai
+X (F, id=ravins_wife)
+  Shyan Nawalrai (F)
+
+Sabrina
+Noel (M)
+  Naina (F)
+
+X (M, id=sapna_dad)
+X (F, id=sapna_mom)
+  Sapna Mohinani
+  Rupee (F)
+  Meena (F)
+  Anil (M)
+  Manu (M)
+
+Rupee
+Jackie (M)
+  Oujal (F)
+  Bridgesh (M)
+
+Meena
+Gul (M, deathday=x)
+  Kabir (M)
+
+Manu
+Nisha (F)
+
+Anil
+Divya (F)
+  X (M, id=anil_divya_child_1)
+  X (M, id=anil_divya_child_2)
+  X (M, id=anil_divya_child_2)
+
+X (M, id=mummy_dad)
+X (F, id=mummy_mom)
+  Ishwari Dayaram
+  Naraindas Chotrani (M)
+  Vishni (F)
+  Ruki (F)
+  Radhi (F)
+  Metharam Chotrani (M)
+  Hundumal Chotrani (M)
+
+Naraindas Chotrani
+Savitri Chotrani (F)
+  Johnny Chotrani (M)
+  Madhu Chotrani (M)
+  Poonum Chotrani (F)
+
+Vishni
+Dewandas (M)
+  Lata (F)
+  Kantu (F)
+  Mohan (M)
+
+Ruki
+Jiwatram (M)
+  Sunder (M)
+  Jackie Broke Bike (M)
+  Prem (M)
+  X (M, id=ruki_jiwatram_son_1)
+  X (M, id=ruki_jiwatram_son_2)
+  X (F, id=ruki_jiwatram_daughter_1)
+  X (F, id=ruki_jiwatram_daughter_2)
+  X (F, id=ruki_jiwatram_daughter_3)
+  X (F, id=ruki_jiwatram_daughter_4)
+
+Radhi
+Hemandas (M)
+
+Hundumal Chotrani
+X (F, id=hundumal_wife)
+  X (M, id=hudumal_son_1)
+  X (M, id=hudumal_son_2)
+  X (F, id=hudumal_daughter_1)
+  X (F, id=hudumal_daughter_2)
+
+Metharam Chotrani
+X (F, id=metharam_wife)
+  Sunder Chotrani
+  Pushpa Chotrani (F)
+  Indra Chotrani (F)
