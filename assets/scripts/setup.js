@@ -151,23 +151,24 @@
       myDiagram.nodeTemplateMap.add("LinkLabel",
         $(go.Node, { selectable: false, width: 1, height: 1, fromEndSegmentLength: 20 }));
 
-
       myDiagram.linkTemplate =  // for parent-child relationships
         $(go.Link,
           {
             routing: go.Link.Orthogonal, corner: 5,
             layerName: "Background", selectable: false,
-            fromSpot: go.Spot.Bottom, toSpot: go.Spot.Top
           },
           $(go.Shape, { stroke: "#424242", strokeWidth: 2 })
         );
 
       myDiagram.linkTemplateMap.add("Marriage",  // for marriage relationships
         $(go.Link,
-          { selectable: false, routing: go.Link.AvoidsNodes },
+          {
+            routing: go.Link.AvoidsNodes,
+            selectable: false,
+            layerName: "Background"
+          },
           $(go.Shape, { strokeWidth: 2.5, stroke: "#5d8cc1" /* blue */ })
         ));
-
 
       // n: name, s: sex, m: mother, f: father, ux: wife, vir: husband, a: attributes/markers
       setupDiagram(myDiagram, structure, focus_person);
