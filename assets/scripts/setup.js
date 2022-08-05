@@ -528,3 +528,58 @@
     }
   }
   // end GenogramLayout class
+
+function layout() {
+      myDiagram.startTransaction("change Layout");
+      var lay = myDiagram.layout;
+
+      var direction = getRadioValue("direction");
+      direction = parseFloat(direction, 10);
+      lay.direction = direction;
+
+      var layerSpacing = document.getElementById("layerSpacing").value;
+      layerSpacing = parseFloat(layerSpacing, 10);
+      lay.layerSpacing = layerSpacing;
+
+      var columnSpacing = document.getElementById("columnSpacing").value;
+      columnSpacing = parseFloat(columnSpacing, 10);
+      lay.columnSpacing = columnSpacing;
+
+      var cycleRemove = getRadioValue("cycleRemove");
+      if (cycleRemove === "CycleDepthFirst") lay.cycleRemoveOption = go.LayeredDigraphLayout.CycleDepthFirst;
+      else if (cycleRemove === "CycleGreedy") lay.cycleRemoveOption = go.LayeredDigraphLayout.CycleGreedy;
+
+      var layering = getRadioValue("layering");
+      if (layering === "LayerOptimalLinkLength") lay.layeringOption = go.LayeredDigraphLayout.LayerOptimalLinkLength;
+      else if (layering === "LayerLongestPathSource") lay.layeringOption = go.LayeredDigraphLayout.LayerLongestPathSource;
+      else if (layering === "LayerLongestPathSink") lay.layeringOption = go.LayeredDigraphLayout.LayerLongestPathSink;
+
+      var initialize = getRadioValue("initialize");
+      if (initialize === "InitDepthFirstOut") lay.initializeOption = go.LayeredDigraphLayout.InitDepthFirstOut;
+      else if (initialize === "InitDepthFirstIn") lay.initializeOption = go.LayeredDigraphLayout.InitDepthFirstIn;
+      else if (initialize === "InitNaive") lay.initializeOption = go.LayeredDigraphLayout.InitNaive;
+
+      var aggressive = getRadioValue("aggressive");
+      if (aggressive === "AggressiveLess") lay.aggressiveOption = go.LayeredDigraphLayout.AggressiveLess;
+      else if (aggressive === "AggressiveNone") lay.aggressiveOption = go.LayeredDigraphLayout.AggressiveNone;
+      else if (aggressive === "AggressiveMore") lay.aggressiveOption = go.LayeredDigraphLayout.AggressiveMore;
+
+      //TODO implement pack option
+      var pack = document.getElementsByName("pack");
+      var packing = 0;
+      for (var i = 0; i < pack.length; i++) {
+        if (pack[i].checked) packing = packing | parseInt(pack[i].value, 10);
+      }
+      lay.packOption = packing;
+
+      var setsPortSpots = document.getElementById("setsPortSpots");
+      lay.setsPortSpots = setsPortSpots.checked;
+
+      myDiagram.commitTransaction("change Layout");
+    }
+
+    function getRadioValue(name) {
+      var radio = document.getElementsByName(name);
+      for (var i = 0; i < radio.length; i++)
+        if (radio[i].checked) return radio[i].value;
+    }

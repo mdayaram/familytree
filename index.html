@@ -6,6 +6,38 @@
     <script src="assets/scripts/setup.js"></script>
   </head>
   <body onload="init()">
+   <span style="display: inline-block; vertical-align: top; padding: 5px">
+      <b>LayeredDigraphLayout Properties</b><br />
+      Direction:
+      <input type="radio" name="direction" onclick="layout()" value="0" checked="checked" />Right (0)
+      <input type="radio" name="direction" onclick="layout()" value="90" />Down (90)
+      <input type="radio" name="direction" onclick="layout()" value="180" />Left (180)
+      <input type="radio" name="direction" onclick="layout()" value="270" />Up (270)<br />
+      LayerSpacing:
+      <input type="text" size="3" id="layerSpacing" value="25" onchange="layout()" style="clear: left;" /><br />
+      ColumnSpacing:
+      <input type="text" size="3" id="columnSpacing" value="25" onchange="layout()" /><br />
+      CycleRemove:
+      <input type="radio" name="cycleRemove" onclick="layout()" value="CycleDepthFirst" checked="checked" /> CycleDepthFirst
+      <input type="radio" name="cycleRemove" onclick="layout()" value="CycleGreedy" /> CycleGreedy<br />
+      Layering:
+      <input type="radio" name="layering" onclick="layout()" value="LayerOptimalLinkLength" checked="checked" /> LayerOptimalLinkLength
+      <input type="radio" name="layering" onclick="layout()" value="LayerLongestPathSource" /> LayerLongestPathSource
+      <input type="radio" name="layering" onclick="layout()" value="LayerLongestPathSink" /> LayerLongestPathSink<br />
+      Initialize:
+      <input type="radio" name="initialize" onclick="layout()" value="InitDepthFirstOut" checked="checked" /> InitDepthFirstOut
+      <input type="radio" name="initialize" onclick="layout()" value="InitDepthFirstIn" /> InitDepthFirstIn
+      <input type="radio" name="initialize" onclick="layout()" value="InitNaive" /> InitNaive<br />
+      Aggressive:
+      <input type="radio" name="aggressive" onclick="layout()" value="AggressiveNone" /> AggressiveNone
+      <input type="radio" name="aggressive" onclick="layout()" value="AggressiveLess" checked="checked" /> AggressiveLess
+      <input type="radio" name="aggressive" onclick="layout()" value="AggressiveMore" /> AggressiveMore<br />
+      Pack:
+      <input type="checkbox" name="pack" onclick="layout()" value="4" checked="checked" /> PackMedian
+      <input type="checkbox" name="pack" onclick="layout()" value="2" checked="checked" /> PackStraighten
+      <input type="checkbox" name="pack" onclick="layout()" value="1" checked="checked" /> PackExpand<br />
+      SetsPortSpots: <input type="checkbox" id="setsPortSpots" onclick="layout()" checked="checked" />
+    </span>
     <div id="myDiagramDiv" style="width:100%; height:100%">
     </div>
   </body>

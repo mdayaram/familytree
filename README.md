@@ -7,6 +7,9 @@ all.
 Pretty much just copied/pasted what's here:
 http://gojs.net/latest/samples/genogram.html
 
+And the customization properties from here:
+https://gojs.net/latest/samples/ldLayout.html
+
 But added the following change since without it I was getting odd connections
 to people that were not actually connected. I added 
 `routing: go.Link.AvoidsNodes` in the setup.js file under the Marriage relations
