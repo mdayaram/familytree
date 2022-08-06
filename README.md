@@ -35,3 +35,10 @@ $> ./treemaker.rb
 ```
 
 And then open `index.html` in a browser to see the result.
+
+## TODO
+
+* Implement search-by-name functionality to find someone, and highlight their tree.
+* Play around with the different properties to figure out best layout.
+* Everything together is a mess, so maybe think about why I want this and how can
+  I make it more useful to me.
