@@ -240,7 +240,7 @@ X (id=bachumals_wife, F, deathday=x)
 
 Dayaram Bachumal
 Ishwari Dayaram (F)
-	Ratna Ednani (F)
+	Ratna Ednani (F, deathday=x)
 	Sita Chandiramani (F, deathday=x)
 	Mira Daryanani (F)
 	Gul Dayaram (M)
