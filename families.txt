@@ -249,7 +249,7 @@ Ishwari Dayaram (F)
 
 Ratna Ednani
 Lalchand Ednani (M, deathday=x)
-	Henny Ednani (M)
+	Henny Ednani (M, deathday=x)
 	Asha Lalwani (F)
 	Sonu Ednani (F)
 
