@@ -242,7 +242,7 @@ Dayaram Bachumal
 Ishwari Dayaram (F)
 	Ratna Ednani (F, deathday=x)
 	Sita Chandiramani (F, deathday=x)
-	Mira Daryanani (F)
+	Meera Daryanani (F)
 	Gul Dayaram (M)
 	Murli Dayaram (M, deathday=x)
 	Sheila Chotrani (F, deathday=x)
@@ -272,7 +272,7 @@ Sharon Chandiramani (F)
 S
 	Trinity Chandiramani (F)
 
-Mira Daryanani
+Meera Daryanani
 Satu Daryanani (M)
 	Kalpana Chandhok (F)
 	Shama (F)
