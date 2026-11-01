@@ -15,11 +15,17 @@ const FLY_MS = 600;
 /** A wide strip, matching the tree's very wide shape. */
 const MINIMAP_SIZE = { width: 520, height: 56 };
 
+/** Who to fly to; `seq` changes on every request so re-picking the same person flies again. */
+export interface Focus {
+  id: string;
+  seq: number;
+}
+
 export interface FamilyMapProps {
   nodes: FamilyFlowNode[];
   edges: Edge<FamilyEdgeData>[];
   onSelect(id: string): void;
-  focusId: string | null;
+  focus: Focus | null;
 }
 
 function miniMapColor(node: Node): string {
@@ -28,7 +34,7 @@ function miniMapColor(node: Node): string {
   return n.type === 'union' ? 'transparent' : n.data.faded ? '#d5d9de' : '#6b7480';
 }
 
-export function FamilyMap({ nodes, edges, onSelect, focusId }: FamilyMapProps) {
+export function FamilyMap({ nodes, edges, onSelect, focus }: FamilyMapProps) {
   const rf = useReactFlow();
   const nodesRef = useRef(nodes);
   nodesRef.current = nodes;
@@ -39,10 +45,10 @@ export function FamilyMap({ nodes, edges, onSelect, focusId }: FamilyMapProps) {
   };
 
   useEffect(() => {
-    if (focusId) centerOn(focusId, Math.max(rf.getZoom(), 1), FLY_MS);
-    // Fly only when the focus changes, not when nodes restyle.
+    if (focus) centerOn(focus.id, Math.max(rf.getZoom(), 1), FLY_MS);
+    // Fly only when a new focus is requested, not when nodes restyle.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [focusId]);
+  }, [focus]);
 
   return (
     <ReactFlow
