@@ -420,3 +420,33 @@ Removed at the end: treemaker.rb, assets/
 - [ ] **Step 3: Verify.** Run `npm test && npm run typecheck && npm run build`. Expected: all succeed.
 - [ ] **Step 4: Commit** with the message `chore: remove GoJS/Ruby pipeline, update docs`.
 - [ ] **Step 5: Open the PR.** Push `redesign/react-flow-map` and open a PR against `main`. The description summarises the features and includes the Task 6 screenshot description.
+
+### Task 9: CI and GitHub Pages deployment (added at Manoj's request)
+
+The site is served by GitHub Pages at `http://noj.cc/familytree/`. It currently uses a "legacy" build that publishes `main` at `/`.
+
+**Files:**
+- Create: `.github/workflows/ci.yml`, `.github/workflows/deploy.yml`
+- Modify: `vite.config.ts`, setting `base: '/familytree/'` for production builds
+
+**Workflows:**
+- `ci.yml` runs on `pull_request` and on `push` to `main`, on Node 24:
+  - `npm ci`
+  - `npm run typecheck`
+  - `npm test`
+  - `npm run build`
+- `deploy.yml` runs on `push` to `main` and `workflow_dispatch`, using GitHub's standard Pages actions:
+  - `actions/configure-pages`
+  - `actions/upload-pages-artifact` with `path: dist`
+  - `actions/deploy-pages`
+  - permissions: `pages: write` and `id-token: write`
+  - a `concurrency` group of `pages`
+  - It deploys only after the same test steps pass.
+
+**Steps:**
+- [ ] **Step 1: Add the workflows and the production `base`.**
+- [ ] **Step 2: Verify the build.** Run `npm run build`, then `npx vite preview --base /familytree/`.
+  - Expected: the app loads at `/familytree/`, and the built `dist/` contains no `families.txt` request (the data is bundled).
+- [ ] **Step 3: Check the workflows run on the PR.** Push the branch and confirm with `gh pr checks`. Expected: CI passes on the PR.
+- [ ] **Step 4: Switch the Pages source to GitHub Actions before merging. Ask Manoj first:** it's a repository setting that changes how the live site is published. Once switched, merging to `main` deploys the new app.
+- [ ] **Step 5: Commit** with the message `ci: run tests on PRs and deploy to GitHub Pages`.
