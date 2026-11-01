@@ -6,23 +6,34 @@ import { findPath } from './graph/familyGraph';
 import { layoutFamily, type Layout } from './layout/layoutFamily';
 import { FamilyMap, type Focus } from './map/FamilyMap';
 import { toFlow } from './map/toFlow';
+import { IssuesBanner, IssuesPage, issueText } from './panel/IssuesBanner';
 import { SearchBox } from './panel/SearchBox';
 import { SidePanel } from './panel/SidePanel';
 
 export function App() {
-  const { data, graph } = useMemo(loadFamilies, []);
+  const { data, graph, issues } = useMemo(loadFamilies, []);
+  const errors = issues.filter((i) => i.severity === 'error');
+  const warnings = issues.filter((i) => i.severity === 'warning');
   const [layout, setLayout] = useState<Layout | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [pathFromId, setPathFromId] = useState(DEFAULT_PATH_FROM_ID);
   const [focus, setFocus] = useState<Focus | null>(null);
 
   useEffect(() => {
+    errors.forEach((i) => console.error(issueText(i)));
+    warnings.forEach((i) => console.warn(issueText(i)));
+    // Log once per load of families.txt.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [issues]);
+
+  useEffect(() => {
+    if (errors.length) return;
     let cancelled = false;
     layoutFamily(data).then((l) => !cancelled && setLayout(l));
     return () => {
       cancelled = true;
     };
-  }, [data]);
+  }, [data, errors.length]);
 
   // Select someone and fly the map to them (search results and panel links).
   const goTo = (id: string) => {
@@ -41,6 +52,8 @@ export function App() {
     [data, layout, pathIds, selectedId],
   );
 
+  if (errors.length) return <IssuesPage issues={errors} />;
+
   return (
     <div className="app">
       <main className="map">
@@ -51,7 +64,10 @@ export function App() {
         ) : (
           <p className="loading">Laying out the tree…</p>
         )}
-        <SearchBox graph={graph} onPick={goTo} className="map-search" />
+        <div className="map-overlay">
+          <SearchBox graph={graph} onPick={goTo} className="map-search" />
+          <IssuesBanner issues={warnings} />
+        </div>
       </main>
       <SidePanel graph={graph} selectedId={selectedId} pathFromId={pathFromId} onSelect={goTo} onPathFromChange={setPathFromId} />
     </div>

@@ -88,7 +88,15 @@ html, body, #root { margin: 0; height: 100%; background: var(--bg); }
 .search li[aria-selected='true'] { background: #eef3f9; }
 .result-name { font-weight: 500; }
 .result-hint { font-size: 12px; color: var(--muted); }
-.map-search { position: absolute; z-index: 5; top: 12px; left: 12px; width: 320px; }
+.map-overlay { position: absolute; z-index: 5; top: 12px; left: 12px; width: 320px; display: flex; flex-direction: column; gap: 8px; }
+
+/* Data problems */
+.issues-banner { padding: 6px 12px; font-size: 13px; background: #fff7e0; border: 1px solid #f0d58a; border-radius: 8px; }
+.issues-banner .link { color: #7a5a00; font-weight: 500; }
+.issues-banner ul { margin: 6px 0 0; padding-left: 18px; color: #5c4500; }
+.issues-page { max-width: 760px; margin: 48px auto; padding: 0 16px; }
+.issues-page h1 { font-size: 22px; color: #a11; }
+.issues-page li { margin: 6px 0; font-family: ui-monospace, Menlo, monospace; font-size: 13px; }
 .search.compact input { padding: 6px 10px; font-size: 13px; border-radius: 8px; }
 
 /* Side panel */
