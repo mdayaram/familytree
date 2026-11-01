@@ -1,1 +1,5 @@
 .~lock*
+.superpowers/
+.playwright-mcp/
+node_modules/
+dist/
