@@ -1,0 +1,55 @@
+:root {
+  --bg: #f7f6f3;
+  --card: #ffffff;
+  --text: #22252a;
+  --muted: #6b7280;
+  --line: #d6d9de;
+  --photo: #d7dee8;
+  --male: #5d8cc1;
+  --female: #c1708a;
+  --path: #d33;
+  --path-bg: #fff1f1;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--text);
+}
+
+* { box-sizing: border-box; }
+html, body, #root { margin: 0; height: 100%; background: var(--bg); }
+
+.app { display: flex; height: 100vh; }
+.map { position: relative; flex: 1; min-width: 0; }
+.loading { margin: 2rem; color: var(--muted); }
+
+/* Person card */
+.person {
+  width: 120px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--line);
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: opacity 150ms;
+}
+.person[data-gender='M'] { border-left-color: var(--male); }
+.person[data-gender='F'] { border-left-color: var(--female); }
+.person .photo { flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--photo); }
+.person .name { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+.person .deceased { color: var(--muted); }
+.person.unknown .name { color: var(--muted); font-style: italic; }
+.person.on-path { border-color: var(--path); background: var(--path-bg); }
+.person.selected { box-shadow: 0 0 0 3px var(--path); }
+.person.faded, .union.faded { opacity: 0.2; }
+
+/* Union (couple) point */
+.union { width: 8px; height: 8px; border-radius: 50%; background: #9aa3ad; }
+.union.on-path { background: var(--path); }
+
+/* Handles exist only to anchor edges. */
+.react-flow__handle { opacity: 0; pointer-events: none; min-width: 0; min-height: 0; width: 1px; height: 1px; border: 0; }
