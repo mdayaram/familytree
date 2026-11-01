@@ -1,6 +1,6 @@
 import type { Edge, Node } from '@xyflow/react';
 import type { FamilyData, Person } from '../data/types';
-import type { Layout, Point } from '../layout/layoutFamily';
+import { PERSON_H, PERSON_W, UNION_SIZE, type Layout, type Point } from '../layout/layoutFamily';
 
 /** Ids on the current path (empty = no path), plus the selected person. */
 export interface Highlight {
@@ -43,12 +43,17 @@ export function toFlow(data: FamilyData, layout: Layout, h: Highlight): { nodes:
       id: person.id,
       type: 'person',
       position: pos(person.id),
+      // Fixed sizes: React Flow (and its mini-map) can use them without measuring.
+      width: PERSON_W,
+      height: PERSON_H,
       data: { person, onPath: on(person.id), faded: showingPath && !on(person.id), selected: h.selectedId === person.id },
     })),
     ...data.unions.map((u): UnionFlowNode => ({
       id: u.id,
       type: 'union',
       position: pos(u.id),
+      width: UNION_SIZE,
+      height: UNION_SIZE,
       data: { onPath: on(u.id), faded: showingPath && !on(u.id), separated: u.separated },
     })),
   ];

@@ -46,6 +46,13 @@ html, body, #root { margin: 0; height: 100%; background: var(--bg); }
 .person.on-path { border-color: var(--path); background: var(--path-bg); }
 .person.selected { box-shadow: 0 0 0 3px var(--path); }
 .person.faded, .union.faded { opacity: 0.2; }
+/* Zoomed out: a solid coloured mark per person. */
+.person.compact { padding: 0; background: var(--line); border: 0; }
+.person.compact[data-gender='M'] { background: var(--male); }
+.person.compact[data-gender='F'] { background: var(--female); }
+.person.compact.on-path { background: var(--path); }
+
+.react-flow__minimap { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
 
 /* Union (couple) point */
 .union { width: 8px; height: 8px; border-radius: 50%; background: #9aa3ad; }
