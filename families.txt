@@ -7,7 +7,7 @@ Masi
 X (id=masi_husband, M, deathday=x)
 	X (id=vandu_ma, F, deathday=x)
 
-X (id=vandu_ma, F)
+X (id=vandu_ma, F, deathday=x)
 X (id=vandu_pa, M, deathday=x)
 	Venita Balani (F)
 
@@ -22,7 +22,7 @@ Boolchand Mohinani (M, deathday=x)
 	Tulsi Mohinani (M)
 	Jiwat Mohinani (M, deathday=x)
 	Lacha Nawalrai (F)
-	Pushpa (F)
+	Pushpa Grenada (F)
 	Babe (F)
 	Sheila Naraindas (F)
 	Ishu Mirpuri (F)
@@ -137,8 +137,8 @@ Prerna Nawalrai (F)
 	Rohan Nawalrai (M)
 	Anisha Nawalrai (F)
 
-Pushpa
-Prem (M)
+Pushpa Grenada
+Prem Grenada (M)
 	Rani Manghnani (F)
 	Rekha Mahtani (F)
 
@@ -354,7 +354,7 @@ Anil
 Divya (F)
   X (M, id=anil_divya_child_1)
   X (M, id=anil_divya_child_2)
-  X (M, id=anil_divya_child_2)
+  X (M, id=anil_divya_child_3)
 
 X (M, id=mummy_dad)
 X (F, id=mummy_mom)
