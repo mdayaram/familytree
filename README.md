@@ -1,44 +1,70 @@
 Family Tree
 ===========
 
-My family is complicated, so I copied a tree visualization to make sense of it
-all.
+My family is complicated, so I built a tree visualization to make sense of it
+all. It shows the whole family as one zoomable map: search for someone, fly to
+them, and see the line connecting them to me (or to anyone else).
 
-Pretty much just copied/pasted what's here:
-http://gojs.net/latest/samples/genogram.html
+## Running it
 
-And the customization properties from here:
-https://gojs.net/latest/samples/ldLayout.html
-
-But added the following change since without it I was getting odd connections
-to people that were not actually connected. I added 
-`routing: go.Link.AvoidsNodes` in the setup.js file under the Marriage relations
-properties:
-
-```javascript
-      myDiagram.linkTemplateMap.add("Marriage",  // for marriage relationships
-        $(go.Link,
-          { selectable: false, routing: go.Link.AvoidsNodes },
-          $(go.Shape, { strokeWidth: 2.5, stroke: "#5d8cc1" /* blue */ })
-        ));
+```bash
+npm install
+npm run dev       # open the printed localhost URL
+npm test          # unit and component tests
+npm run build     # production build into dist/
 ```
 
-I didn't want to write JSON to update the tree, but a text visualization of a
-family tree is also pretty confusing.  I used to have a CSV file that was awful
-to update.  The current format is based on "households" so you always chunk
-two parents and their children together.  I got inspiration for this format from
+Pushing to `main` deploys to GitHub Pages; pull requests run the tests.
+
+## Using it
+
+- Search (top left) or click anyone on the map. The map switches to a **path
+  view** showing just the people between you and them (plus each couple's
+  other partner), so even distant relatives read at full size.
+- "Show path from" in the side panel changes who the path starts from.
+- **Show whole tree**, **Clear selection**, Esc, or clicking empty map space
+  goes back to the whole tree, centred where you were.
+- The mini-map (bottom right) shows the whole tree; click or drag in it to move.
+
+## Editing the family
+
+`families.txt` is the source of truth. Edit it and save; the running app
+reloads. Problems (a missing gender, a name that looks like it belongs to two
+different people) show up in the app with their line numbers.
+
+The format is based on "households", so you always chunk two parents and their
+children together:
+
+```
+Parent One (M)
+Parent Two (F, deathday=x)
+S                     # optional: the couple is separated
+	Child Name (F)
+	X (id=some_unique_id, M)
+```
+
+- Lines starting with `#` are comments. Indentation is just for readability.
+- Attributes go in parentheses: `M`/`F`, `id=...`, and `deathday=...` (any
+  value marks the person as deceased).
+- A person's id is their name without spaces or hyphens. Full names are unique:
+  writing the same name again refers to the same person, which is how someone
+  appears as a child in one household and a parent in another. Write those
+  later references bare (no parentheses).
+- Use `X (id=...)` for people whose names I don't know.
+
+I got inspiration for this format from
 https://github.com/adrienverge/familytreemaker which is really nice, but had
 some bugs when I tried to use it for my family tree, so I opted to build my own.
 
-```bash
-$> ./treemaker.rb
-```
+## History
 
-And then open `index.html` in a browser to see the result.
+The first version (2016) copied the GoJS genogram sample and later read a CSV
+file that was awful to update; then a Ruby script turned this text format into
+GoJS data. In 2026 it was rebuilt with Vite, React, React Flow and ELK so it
+could search, highlight paths between people, and show the very wide tree with
+a mini-map.
 
 ## TODO
 
-* Implement search-by-name functionality to find someone, and highlight their tree.
-* Play around with the different properties to figure out best layout.
-* Everything together is a mess, so maybe think about why I want this and how can
-  I make it more useful to me.
+* Photos (kept out of this public repo).
+* Maybe more details per person (birth years, places, notes).
