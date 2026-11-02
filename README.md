@@ -50,6 +50,10 @@ S                     # optional: the couple is separated
   writing the same name again refers to the same person, which is how someone
   appears as a child in one household and a parent in another. Write those
   later references bare (no parentheses).
+- If two different people really share a full name, give one of them an
+  explicit `id=` and use it on every line that mentions them, e.g.
+  `Prem Chandiramani (id=prem_chandiramani_grenada, M)`. Search tells them
+  apart by spouse or parents.
 - Use `X (id=...)` for people whose names I don't know.
 
 I got inspiration for this format from

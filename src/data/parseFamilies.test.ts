@@ -63,7 +63,7 @@ describe('parseFamilies', () => {
     expect(data.unions.length).toBeGreaterThanOrEqual(78);
     const has = (a: string, b: string) =>
       data.unions.find((u) => u.partners.includes(a) && u.partners.includes(b));
-    expect(has('PushpaGrenada', 'PremGrenada')).toBeDefined();
+    expect(has('PushpaChandiramani', 'prem_chandiramani_grenada')).toBeDefined();
     expect(has('Ruki', 'Jiwatram')?.children).toContain('Prem');
   });
 });

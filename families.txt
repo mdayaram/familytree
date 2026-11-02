@@ -22,7 +22,7 @@ Boolchand Mohinani (M, deathday=x)
 	Tulsi Mohinani (M)
 	Jiwat Mohinani (M, deathday=x)
 	Lacha Nawalrai (F)
-	Pushpa Grenada (F)
+	Pushpa Chandiramani (F)
 	Babe (F)
 	Sheila Naraindas (F)
 	Ishu Mirpuri (F)
@@ -137,8 +137,8 @@ Prerna Nawalrai (F)
 	Rohan Nawalrai (M)
 	Anisha Nawalrai (F)
 
-Pushpa Grenada
-Prem Grenada (M)
+Pushpa Chandiramani
+Prem Chandiramani (id=prem_chandiramani_grenada, M)
 	Rani Manghnani (F)
 	Rekha Mahtani (F)
 

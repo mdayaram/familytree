@@ -31,6 +31,11 @@ describe('checkFamilies', () => {
     expect(matching(reference, /two different people/)).toHaveLength(0);
   });
 
+  it('does not flag two people who share a name but have different ids', () => {
+    const issues = check('Sita (F)\nPrem Chandiramani (M)\n\nPushpa (F)\nPrem Chandiramani (id=prem_2, M)\n');
+    expect(issues).toEqual([]);
+  });
+
   it('warns when someone is a child in two households', () => {
     const issues = check('A (M)\nB (F)\n\tK (M)\n\nC (M)\nD (F)\n\tK\n');
     expect(matching(issues, /two sets of parents/)).toHaveLength(1);

@@ -10,11 +10,11 @@ const noop = () => {};
 describe('SidePanel', () => {
   it('shows the selected person and their family as links, without listing the path', () => {
     const onSelect = vi.fn();
-    render(<SidePanel graph={graph} selectedId="PremGrenada" pathFromId="ManojDayaram" onSelect={onSelect} onPathFromChange={noop} onClear={noop} />);
-    expect(screen.getByRole('heading', { name: 'Prem Grenada' })).toBeInTheDocument();
+    render(<SidePanel graph={graph} selectedId="prem_chandiramani_grenada" pathFromId="ManojDayaram" onSelect={onSelect} onPathFromChange={noop} onClear={noop} />);
+    expect(screen.getByRole('heading', { name: 'Prem Chandiramani' })).toBeInTheDocument();
     expect(screen.getByText('Married to')).toBeInTheDocument();
-    fireEvent.click(screen.getByRole('button', { name: 'Pushpa Grenada' }));
-    expect(onSelect).toHaveBeenCalledWith('PushpaGrenada');
+    fireEvent.click(screen.getByRole('button', { name: 'Pushpa Chandiramani' }));
+    expect(onSelect).toHaveBeenCalledWith('PushpaChandiramani');
     expect(screen.queryByText(/path to/i)).not.toBeInTheDocument();
   });
 
@@ -26,7 +26,7 @@ describe('SidePanel', () => {
   });
 
   it('shows who the path is drawn from', () => {
-    render(<SidePanel graph={graph} selectedId="PremGrenada" pathFromId="ManojDayaram" onSelect={noop} onPathFromChange={noop} onClear={noop} />);
+    render(<SidePanel graph={graph} selectedId="prem_chandiramani_grenada" pathFromId="ManojDayaram" onSelect={noop} onPathFromChange={noop} onClear={noop} />);
     expect(screen.getByText('Manoj Dayaram')).toBeInTheDocument();
   });
 
