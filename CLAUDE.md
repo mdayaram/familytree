@@ -33,7 +33,8 @@ npm run build                            # production build to dist/ (base /fami
 - Households are separated by blank lines; `#` lines are comments; indentation is ignored.
 - Lines 1–2 of a household are the partners, then an optional `S`/`SEPARATED` line, then children.
 - Attributes in `(...)`: `M`/`F`, `id=...`, `deathday=...` (any value = deceased); other `key=value` pairs are kept in `attrs`.
-- Id defaults to the name without spaces/hyphens. Full names are unique by design; the same name again is the same person. The first mention decides gender and deceased status.
+- Id defaults to the name without spaces/hyphens. The same name again is the same person. The first mention decides gender and deceased status.
+- Two real people who share a full name are kept apart with an explicit `id=` on one of them, repeated on every mention (e.g. Sita's husband `Prem Chandiramani` vs Pushpa's husband `Prem Chandiramani (id=prem_chandiramani_grenada)`). Never "fix" this by renaming either.
 - Parentheses can't appear in a name (they hold attributes).
 - A gender on more than one mention of the same id is warned as a possible accidental merge (that's how two different "Prem"s were once merged). Proper back-references are written bare.
 - Confirmed-correct cousin marriages (don't "fix"): Rajesh + Rina Mohinani, Sheila + Sunder Chotrani.

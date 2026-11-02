@@ -7,15 +7,15 @@ const real = () => buildGraph(realFamilies().data);
 const fixture = (text: string) => buildGraph(parseFamilies(text).data);
 
 describe('findPath', () => {
-  it('finds Manoj to Prem Grenada through the shared parents union', () => {
+  it('finds Manoj to Prem Chandiramani through the shared parents union', () => {
     const g = real();
-    const path = findPath(g, 'ManojDayaram', 'PremGrenada')!;
+    const path = findPath(g, 'ManojDayaram', 'prem_chandiramani_grenada')!;
     // Compare people only: union ids are numbered by file position and shift when households are added.
     expect(path.filter((id) => !id.startsWith('union:'))).toEqual([
-      'ManojDayaram', 'VeenaDayaram', 'Nani', 'PushpaGrenada', 'PremGrenada',
+      'ManojDayaram', 'VeenaDayaram', 'Nani', 'PushpaChandiramani', 'prem_chandiramani_grenada',
     ]);
     // Nani and Pushpa connect through their parents' union (Muli + Boolchand), not through Muli.
-    const parents = g.data.unions.find((u) => u.children.includes('Nani') && u.children.includes('PushpaGrenada'))!;
+    const parents = g.data.unions.find((u) => u.children.includes('Nani') && u.children.includes('PushpaChandiramani'))!;
     expect(parents.partners).toContain('MuliMohinani');
     expect(path).toContain(parents.id);
   });
@@ -41,9 +41,9 @@ describe('findPath', () => {
 
 describe('relatives', () => {
   it('lists parents, spouses and children', () => {
-    const r = relatives(real(), 'PushpaGrenada');
+    const r = relatives(real(), 'PushpaChandiramani');
     expect([...r.parents].sort()).toEqual(['BoolchandMohinani', 'MuliMohinani']);
-    expect(r.spouses).toEqual(['PremGrenada']);
+    expect(r.spouses).toEqual(['prem_chandiramani_grenada']);
     expect(r.children).toEqual(['RaniManghnani', 'RekhaMahtani']);
   });
 });
@@ -64,6 +64,6 @@ describe('describePerson', () => {
   });
 
   it('names the spouse first', () => {
-    expect(describePerson(real(), 'PremGrenada')).toBe('spouse of Pushpa Grenada');
+    expect(describePerson(real(), 'prem_chandiramani_grenada')).toBe('spouse of Pushpa Chandiramani');
   });
 });

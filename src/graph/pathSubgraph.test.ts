@@ -7,16 +7,16 @@ import { pathSubgraph } from './pathSubgraph';
 describe('pathSubgraph', () => {
   it('keeps the path people, both partners of each couple on it, and only path children', () => {
     const { data } = realFamilies();
-    const path = findPath(buildGraph(data), 'ManojDayaram', 'PremGrenada')!;
+    const path = findPath(buildGraph(data), 'ManojDayaram', 'prem_chandiramani_grenada')!;
     const sub = pathSubgraph(data, path);
 
     expect([...sub.people.keys()].sort()).toEqual(
-      ['BoolchandMohinani', 'GulDayaram', 'ManojDayaram', 'MuliMohinani', 'Nani', 'PremGrenada', 'PushpaGrenada', 'VeenaDayaram', 'nani_husband'].sort(),
+      ['BoolchandMohinani', 'GulDayaram', 'ManojDayaram', 'MuliMohinani', 'Nani', 'prem_chandiramani_grenada', 'PushpaChandiramani', 'VeenaDayaram', 'nani_husband'].sort(),
     );
     // Same union ids as the full tree, children cut down to path members.
     expect(sub.unions.map((u) => u.id).sort()).toEqual(path.filter((id) => id.startsWith('union:')).sort());
     const muli = sub.unions.find((u) => u.partners.includes('MuliMohinani'))!;
-    expect(muli.children.sort()).toEqual(['Nani', 'PushpaGrenada']);
+    expect(muli.children.sort()).toEqual(['Nani', 'PushpaChandiramani']);
     for (const u of sub.unions) for (const c of u.children) expect(path).toContain(c);
   });
 

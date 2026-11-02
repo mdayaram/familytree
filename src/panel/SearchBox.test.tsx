@@ -12,7 +12,7 @@ describe('SearchBox', () => {
     fireEvent.change(screen.getByRole('combobox'), { target: { value: 'prem' } });
     const options = screen.getAllByRole('option');
     expect(options).toHaveLength(3);
-    expect(screen.getByText('spouse of Pushpa Grenada')).toBeInTheDocument();
+    expect(screen.getByText('spouse of Pushpa Chandiramani')).toBeInTheDocument();
     expect(screen.getByText('child of Ruki & Jiwatram')).toBeInTheDocument();
   });
 
