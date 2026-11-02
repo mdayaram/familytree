@@ -51,6 +51,21 @@ html, body, #root { margin: 0; height: 100%; background: var(--bg); }
 .person.compact[data-gender='M'] { background: var(--male); }
 .person.compact[data-gender='F'] { background: var(--female); }
 .person.compact.on-path { background: var(--path); }
+.path-label {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform-origin: bottom center;
+  margin-bottom: 4px;
+  padding: 2px 8px;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--path);
+  border-radius: 999px;
+  pointer-events: none;
+}
 
 .react-flow__minimap { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
 

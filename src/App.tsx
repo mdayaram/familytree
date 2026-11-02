@@ -5,6 +5,7 @@ import { loadFamilies } from './data/loadFamilies';
 import { findPath } from './graph/familyGraph';
 import { layoutFamily, type Layout } from './layout/layoutFamily';
 import { FamilyMap, type Focus } from './map/FamilyMap';
+import { focusTargets } from './map/focusTargets';
 import { toFlow } from './map/toFlow';
 import { IssuesBanner, IssuesPage, issueText } from './panel/IssuesBanner';
 import { SearchBox } from './panel/SearchBox';
@@ -35,10 +36,19 @@ export function App() {
     };
   }, [data, errors.length]);
 
-  // Select someone and fly the map to them (search results and panel links).
+  // Bring the selected person, or their whole path from `fromId`, into view.
+  const refocus = (id: string, fromId: string) =>
+    setFocus((f) => ({ ids: focusTargets(findPath(graph, fromId, id), id), seq: (f?.seq ?? 0) + 1 }));
+
+  // Select someone and fly the map to them (map clicks, search results and panel links).
   const goTo = (id: string) => {
     setSelectedId(id);
-    setFocus((f) => ({ id, seq: (f?.seq ?? 0) + 1 }));
+    refocus(id, pathFromId);
+  };
+
+  const changePathFrom = (id: string) => {
+    setPathFromId(id);
+    if (selectedId) refocus(selectedId, id);
   };
 
   const pathIds = useMemo(() => {
@@ -59,7 +69,7 @@ export function App() {
       <main className="map">
         {flow ? (
           <ReactFlowProvider>
-            <FamilyMap nodes={flow.nodes} edges={flow.edges} onSelect={setSelectedId} focus={focus} />
+            <FamilyMap nodes={flow.nodes} edges={flow.edges} onSelect={goTo} focus={focus} />
           </ReactFlowProvider>
         ) : (
           <p className="loading">Laying out the tree…</p>
@@ -69,7 +79,7 @@ export function App() {
           <IssuesBanner issues={warnings} />
         </div>
       </main>
-      <SidePanel graph={graph} selectedId={selectedId} pathFromId={pathFromId} onSelect={goTo} onPathFromChange={setPathFromId} />
+      <SidePanel graph={graph} selectedId={selectedId} pathFromId={pathFromId} onSelect={goTo} onPathFromChange={changePathFrom} />
     </div>
   );
 }

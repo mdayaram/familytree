@@ -7,7 +7,7 @@ Masi
 X (id=masi_husband, M, deathday=x)
 	X (id=vandu_ma, F, deathday=x)
 
-X (id=vandu_ma, F, deathday=x)
+X (id=vandu_ma)
 X (id=vandu_pa, M, deathday=x)
 	Venita Balani (F)
 
@@ -243,7 +243,7 @@ Ishwari Dayaram (F)
 	Ratna Ednani (F, deathday=x)
 	Sita Chandiramani (F, deathday=x)
 	Meera Daryanani (F)
-	Gul Dayaram (M)
+	Gul Dayaram
 	Murli Dayaram (M, deathday=x)
 	Sheila Chotrani (F, deathday=x)
 

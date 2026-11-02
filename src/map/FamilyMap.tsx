@@ -15,9 +15,12 @@ const FLY_MS = 600;
 /** A wide strip, matching the tree's very wide shape. */
 const MINIMAP_SIZE = { width: 520, height: 56 };
 
-/** Who to fly to; `seq` changes on every request so re-picking the same person flies again. */
+/**
+ * What to bring into view: one person (centre on them) or a whole path (fit it).
+ * `seq` changes on every request so re-picking the same person flies again.
+ */
 export interface Focus {
-  id: string;
+  ids: string[];
   seq: number;
 }
 
@@ -45,7 +48,9 @@ export function FamilyMap({ nodes, edges, onSelect, focus }: FamilyMapProps) {
   };
 
   useEffect(() => {
-    if (focus) centerOn(focus.id, Math.max(rf.getZoom(), 1), FLY_MS);
+    if (!focus) return;
+    if (focus.ids.length === 1) centerOn(focus.ids[0], Math.max(rf.getZoom(), 1), FLY_MS);
+    else void rf.fitView({ nodes: focus.ids.map((id) => ({ id })), padding: 0.15, maxZoom: 1, duration: FLY_MS });
     // Fly only when a new focus is requested, not when nodes restyle.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [focus]);
