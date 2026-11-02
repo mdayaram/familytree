@@ -1,7 +1,6 @@
 import { MiniMap, ReactFlow, useReactFlow, type Edge, type Node } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { useEffect, useRef } from 'react';
-import { DEFAULT_PATH_FROM_ID } from '../config';
 import { PERSON_H, PERSON_W } from '../layout/layoutFamily';
 import { PersonNode } from './PersonNode';
 import { RoutedEdge } from './RoutedEdge';
@@ -15,20 +14,23 @@ const FLY_MS = 600;
 /** A wide strip, matching the tree's very wide shape. */
 const MINIMAP_SIZE = { width: 520, height: 56 };
 
-/**
- * What to bring into view: one person (centre on them) or a whole path (fit it).
- * `seq` changes on every request so re-picking the same person flies again.
- */
+/** Who to fly to; `seq` changes on every request so re-picking the same person flies again. */
 export interface Focus {
-  ids: string[];
+  id: string;
   seq: number;
 }
+
+/** Where a freshly mounted map starts: fitted to everything (path view) or centred on a person. */
+export type InitialView = { fit: true } | { centerId: string };
 
 export interface FamilyMapProps {
   nodes: FamilyFlowNode[];
   edges: Edge<FamilyEdgeData>[];
   onSelect(id: string): void;
+  /** Clicking empty map space. */
+  onClear(): void;
   focus: Focus | null;
+  initialView: InitialView;
 }
 
 function miniMapColor(node: Node): string {
@@ -37,7 +39,7 @@ function miniMapColor(node: Node): string {
   return n.type === 'union' ? 'transparent' : n.data.faded ? '#d5d9de' : '#6b7480';
 }
 
-export function FamilyMap({ nodes, edges, onSelect, focus }: FamilyMapProps) {
+export function FamilyMap({ nodes, edges, onSelect, onClear, focus, initialView }: FamilyMapProps) {
   const rf = useReactFlow();
   const nodesRef = useRef(nodes);
   nodesRef.current = nodes;
@@ -47,10 +49,14 @@ export function FamilyMap({ nodes, edges, onSelect, focus }: FamilyMapProps) {
     if (n) void rf.setCenter(n.position.x + PERSON_W / 2, n.position.y + PERSON_H / 2, { zoom, duration });
   };
 
+  // A remounted map starts from `initialView`; only later focus requests fly.
+  const mounted = useRef(false);
   useEffect(() => {
-    if (!focus) return;
-    if (focus.ids.length === 1) centerOn(focus.ids[0], Math.max(rf.getZoom(), 1), FLY_MS);
-    else void rf.fitView({ nodes: focus.ids.map((id) => ({ id })), padding: 0.15, maxZoom: 1, duration: FLY_MS });
+    if (!mounted.current) {
+      mounted.current = true;
+      return;
+    }
+    if (focus) centerOn(focus.id, Math.max(rf.getZoom(), 1), FLY_MS);
     // Fly only when a new focus is requested, not when nodes restyle.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [focus]);
@@ -66,10 +72,14 @@ export function FamilyMap({ nodes, edges, onSelect, focus }: FamilyMapProps) {
       elementsSelectable={false}
       minZoom={0.05}
       maxZoom={2.5}
-      onInit={() => centerOn(DEFAULT_PATH_FROM_ID, 1, 0)}
+      onInit={() => {
+        if ('fit' in initialView) void rf.fitView({ padding: 0.15, maxZoom: 1 });
+        else centerOn(initialView.centerId, 1, 0);
+      }}
       onNodeClick={(_, node) => {
         if (node.type === 'person') onSelect(node.id);
       }}
+      onPaneClick={onClear}
     >
       <MiniMap
         pannable

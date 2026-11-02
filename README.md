@@ -16,6 +16,16 @@ npm run build     # production build into dist/
 
 Pushing to `main` deploys to GitHub Pages; pull requests run the tests.
 
+## Using it
+
+- Search (top left) or click anyone on the map. The map switches to a **path
+  view** showing just the people between you and them (plus each couple's
+  other partner), so even distant relatives read at full size.
+- "Show path from" in the side panel changes who the path starts from.
+- **Show whole tree**, **Clear selection**, Esc, or clicking empty map space
+  goes back to the whole tree, centred where you were.
+- The mini-map (bottom right) shows the whole tree; click or drag in it to move.
+
 ## Editing the family
 
 `families.txt` is the source of truth. Edit it and save; the running app

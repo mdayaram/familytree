@@ -7,9 +7,11 @@ export interface SidePanelProps {
   pathFromId: string;
   onSelect(id: string): void;
   onPathFromChange(id: string): void;
+  /** Deselect, which also leaves path view. */
+  onClear(): void;
 }
 
-export function SidePanel({ graph, selectedId, pathFromId, onSelect, onPathFromChange }: SidePanelProps) {
+export function SidePanel({ graph, selectedId, pathFromId, onSelect, onPathFromChange, onClear }: SidePanelProps) {
   const name = (id: string) => {
     const p = graph.data.people.get(id);
     return p ? displayName(p) : id;
@@ -33,6 +35,9 @@ export function SidePanel({ graph, selectedId, pathFromId, onSelect, onPathFromC
 
   return (
     <aside className="panel">
+      <button type="button" className="link panel-clear" onClick={onClear}>
+        Clear selection
+      </button>
       <div className="panel-photo" aria-hidden />
       <h2>
         {displayName(person)}
