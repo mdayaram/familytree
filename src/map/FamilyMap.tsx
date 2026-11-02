@@ -66,7 +66,12 @@ export function FamilyMap({ nodes, edges, onSelect, focus }: FamilyMapProps) {
         if (node.type === 'person') onSelect(node.id);
       }}
     >
-      <MiniMap pannable zoomable position="bottom-right" nodeColor={miniMapColor} nodeStrokeWidth={0} nodeBorderRadius={0} maskColor="rgba(240, 240, 240, 0.55)" maskStrokeColor="#6b7480" maskStrokeWidth={1.5} ariaLabel="Whole family tree" style={MINIMAP_SIZE} />
+      <MiniMap
+        pannable
+        zoomable
+        // Clicking jumps there; dragging pans.
+        onClick={(_, pos) => void rf.setCenter(pos.x, pos.y, { zoom: rf.getZoom(), duration: FLY_MS })}
+        position="bottom-right" nodeColor={miniMapColor} nodeStrokeWidth={0} nodeBorderRadius={0} maskColor="rgba(240, 240, 240, 0.55)" maskStrokeColor="#6b7480" maskStrokeWidth={1.5} ariaLabel="Whole family tree" style={MINIMAP_SIZE} />
     </ReactFlow>
   );
 }

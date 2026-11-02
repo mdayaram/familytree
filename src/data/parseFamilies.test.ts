@@ -58,8 +58,9 @@ describe('parseFamilies', () => {
   it('parses the real families.txt', () => {
     const { data, issues } = parseFamilies(realText());
     expect(issues.filter((i) => i.severity === 'error')).toEqual([]);
-    expect(data.people.size).toBe(246);
-    expect(data.unions).toHaveLength(78);
+    // Floors, not exact counts: the family grows and CI must not block on ordinary edits.
+    expect(data.people.size).toBeGreaterThanOrEqual(246);
+    expect(data.unions.length).toBeGreaterThanOrEqual(78);
     const has = (a: string, b: string) =>
       data.unions.find((u) => u.partners.includes(a) && u.partners.includes(b));
     expect(has('PushpaGrenada', 'PremGrenada')).toBeDefined();

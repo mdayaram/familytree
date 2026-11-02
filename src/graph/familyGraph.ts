@@ -64,8 +64,12 @@ export function describePerson(g: FamilyGraph, id: string): string {
     const p = g.data.people.get(pid);
     return p ? displayName(p) : pid;
   };
+  // Unknown (X) relatives tell same-named people apart no better than nothing, so skip them.
+  const known = (ids: string[]) => ids.filter((pid) => g.data.people.get(pid)?.name !== 'X');
   const r = relatives(g, id);
-  if (r.spouses.length) return `spouse of ${name(r.spouses[0])}`;
-  if (r.parents.length) return `child of ${r.parents.map(name).join(' & ')}`;
+  const spouses = known(r.spouses);
+  const parents = known(r.parents);
+  if (spouses.length) return `spouse of ${name(spouses[0])}`;
+  if (parents.length) return `child of ${parents.map(name).join(' & ')}`;
   return '';
 }

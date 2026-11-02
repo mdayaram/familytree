@@ -8,10 +8,16 @@ const fixture = (text: string) => buildGraph(parseFamilies(text).data);
 
 describe('findPath', () => {
   it('finds Manoj to Prem Grenada through the shared parents union', () => {
-    expect(findPath(real(), 'ManojDayaram', 'PremGrenada')).toEqual([
-      'ManojDayaram', 'union:45', 'VeenaDayaram', 'union:42', 'Nani',
-      'union:4', 'PushpaGrenada', 'union:27', 'PremGrenada',
+    const g = real();
+    const path = findPath(g, 'ManojDayaram', 'PremGrenada')!;
+    // Compare people only: union ids are numbered by file position and shift when households are added.
+    expect(path.filter((id) => !id.startsWith('union:'))).toEqual([
+      'ManojDayaram', 'VeenaDayaram', 'Nani', 'PushpaGrenada', 'PremGrenada',
     ]);
+    // Nani and Pushpa connect through their parents' union (Muli + Boolchand), not through Muli.
+    const parents = g.data.unions.find((u) => u.children.includes('Nani') && u.children.includes('PushpaGrenada'))!;
+    expect(parents.partners).toContain('MuliMohinani');
+    expect(path).toContain(parents.id);
   });
 
   it('returns just the person when from and to are the same', () => {
@@ -45,6 +51,16 @@ describe('relatives', () => {
 describe('describePerson', () => {
   it('names the parents when there is no spouse', () => {
     expect(describePerson(real(), 'Prem')).toBe('child of Ruki & Jiwatram');
+  });
+
+  it('skips an unknown spouse in favour of named parents', () => {
+    const g = fixture('X (id=h, M)\nKiran (F)\n\tKid (F)\n\nP One (M)\nP Two (F)\n\tKiran\n');
+    expect(describePerson(g, 'Kiran')).toBe('child of P One & P Two');
+  });
+
+  it('leaves out unknown parents and gives no hint when every relative is unknown', () => {
+    expect(describePerson(fixture('Dad (M)\nX (id=m, F)\n\tKid (F)\n'), 'Kid')).toBe('child of Dad');
+    expect(describePerson(fixture('X (id=a, M)\nX (id=b, F)\n\tSolo (F)\n'), 'Solo')).toBe('');
   });
 
   it('names the spouse first', () => {

@@ -36,12 +36,8 @@ describe('checkFamilies', () => {
     expect(matching(issues, /two sets of parents/)).toHaveLength(1);
   });
 
-  it('finds no errors and only the two known harmless warnings in the real data', () => {
-    const issues = checkFamilies(realFamilies().data);
-    expect(issues.filter((i) => i.severity === 'error')).toEqual([]);
-    expect(issues.map((i) => i.message).sort()).toEqual([
-      expect.stringContaining('"Gul Dayaram"'),
-      expect.stringContaining('vandu_ma'),
-    ]);
+  it('finds no errors in the real data', () => {
+    // The deploy gate: errors would replace the map. Warnings don't block.
+    expect(checkFamilies(realFamilies().data).filter((i) => i.severity === 'error')).toEqual([]);
   });
 });
