@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { displayName, relatives, type FamilyGraph } from '../graph/familyGraph';
 import { SearchBox } from './SearchBox';
 
@@ -17,10 +18,12 @@ export function SidePanel({ graph, selectedId, pathFromId, onSelect, onPathFromC
     return p ? displayName(p) : id;
   };
   const person = selectedId ? graph.data.people.get(selectedId) : undefined;
+  /** Phones only (the handle is hidden on wider screens): shrink the sheet to just the name. */
+  const [collapsed, setCollapsed] = useState(false);
 
   if (!person) {
     return (
-      <aside className="panel">
+      <aside className="panel empty">
         <p className="panel-empty">Search or click someone on the map</p>
       </aside>
     );
@@ -34,7 +37,14 @@ export function SidePanel({ graph, selectedId, pathFromId, onSelect, onPathFromC
   ];
 
   return (
-    <aside className="panel">
+    <aside className={collapsed ? 'panel collapsed' : 'panel'}>
+      <button
+        type="button"
+        className="panel-handle"
+        aria-expanded={!collapsed}
+        aria-label={collapsed ? 'Show details' : 'Hide details'}
+        onClick={() => setCollapsed((c) => !c)}
+      />
       <button type="button" className="link panel-clear" onClick={onClear}>
         Clear selection
       </button>

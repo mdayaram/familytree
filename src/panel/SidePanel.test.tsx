@@ -46,4 +46,14 @@ describe('SidePanel', () => {
     render(<SidePanel graph={graph} selectedId="ManojDayaram" pathFromId="ManojDayaram" onSelect={noop} onPathFromChange={noop} onClear={noop} />);
     expect(screen.getByRole('heading', { name: 'Manoj Dayaram' })).toBeInTheDocument();
   });
+
+  it('collapses to just the name and expands again (the phone sheet handle)', () => {
+    render(<SidePanel graph={graph} selectedId="prem_chandiramani_grenada" pathFromId="ManojDayaram" onSelect={noop} onPathFromChange={noop} onClear={noop} />);
+    const panel = screen.getByRole('complementary');
+    fireEvent.click(screen.getByRole('button', { name: 'Hide details' }));
+    expect(panel).toHaveClass('collapsed');
+    expect(screen.getByRole('heading', { name: 'Prem Chandiramani' })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'Show details' }));
+    expect(panel).not.toHaveClass('collapsed');
+  });
 });
