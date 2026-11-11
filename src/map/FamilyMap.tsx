@@ -6,6 +6,7 @@ import { PersonNode } from './PersonNode';
 import { RoutedEdge } from './RoutedEdge';
 import { PATH_COLOR, type FamilyEdgeData, type FamilyFlowNode } from './toFlow';
 import { UnionNode } from './UnionNode';
+import { MOBILE_QUERY, useMediaQuery } from '../useMediaQuery';
 
 const nodeTypes = { person: PersonNode, union: UnionNode };
 const edgeTypes = { routed: RoutedEdge };
@@ -13,6 +14,7 @@ const edgeTypes = { routed: RoutedEdge };
 const FLY_MS = 600;
 /** A wide strip, matching the tree's very wide shape. */
 const MINIMAP_SIZE = { width: 520, height: 56 };
+const MINIMAP_SIZE_MOBILE = { width: 200, height: 32 };
 
 /** Who to fly to; `seq` changes on every request so re-picking the same person flies again. */
 export interface Focus {
@@ -41,6 +43,7 @@ function miniMapColor(node: Node): string {
 
 export function FamilyMap({ nodes, edges, onSelect, onClear, focus, initialView }: FamilyMapProps) {
   const rf = useReactFlow();
+  const mobile = useMediaQuery(MOBILE_QUERY);
   const nodesRef = useRef(nodes);
   nodesRef.current = nodes;
 
@@ -86,7 +89,7 @@ export function FamilyMap({ nodes, edges, onSelect, onClear, focus, initialView 
         zoomable
         // Clicking jumps there; dragging pans.
         onClick={(_, pos) => void rf.setCenter(pos.x, pos.y, { zoom: rf.getZoom(), duration: FLY_MS })}
-        position="bottom-right" nodeColor={miniMapColor} nodeStrokeWidth={0} nodeBorderRadius={0} maskColor="rgba(240, 240, 240, 0.55)" maskStrokeColor="#6b7480" maskStrokeWidth={1.5} ariaLabel="Whole family tree" style={MINIMAP_SIZE} />
+        position="bottom-right" nodeColor={miniMapColor} nodeStrokeWidth={0} nodeBorderRadius={0} maskColor="rgba(240, 240, 240, 0.55)" maskStrokeColor="#6b7480" maskStrokeWidth={1.5} ariaLabel="Whole family tree" style={mobile ? MINIMAP_SIZE_MOBILE : MINIMAP_SIZE} />
     </ReactFlow>
   );
 }
